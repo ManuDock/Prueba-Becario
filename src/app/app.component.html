@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<div class="container-md"> 
+  <h2>Prueba</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Puesto</th>
+        <th scope="col">Horario</th>
+        <th scope='col'>Fecha alta</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor="let item of becarios$ | async" >
+          <td>{{item.nombre}}</td>
+          <td>{{item.apellidos}}</td>
+          <td>{{item.puesto}}</td>
+          <td>{{item.horario}}</td>
+          <td>{{item.fechaalta}}</td>
+        </tr>
+      </tbody>
+  </table>
+</div>
