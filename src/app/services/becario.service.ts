@@ -7,10 +7,16 @@ import { IBecario } from '../store/becario.reducer';
   providedIn: 'root',
 })
 export class BecarioService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+  }
   getBecarios(){
     return this.httpClient.get(
       'https://guadaltech-fullstack.herokuapp.com/api/becarios/'
+    );
+  }
+  deleteBecario(id: string){
+    return this.httpClient.delete(
+      `https://guadaltech-fullstack.herokuapp.com/api/becarios/${id}`
     );
   }
 }

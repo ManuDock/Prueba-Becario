@@ -19,6 +19,11 @@
           <td>{{item.puesto}}</td>
           <td>{{item.horario}}</td>
           <td>{{item.fechaalta}}</td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDeleteBecario(item.id)">
+              Eliminar
+            </button>
+          </td>
         </tr>
       </tbody>
   </table>

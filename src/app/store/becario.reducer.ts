@@ -4,6 +4,7 @@ import * as BecariosActions from './becario.actions';
 export interface IBecarioState {
   entities: IBecario[];
   loading: boolean;
+
 }
 
 export interface IBecario {
@@ -44,7 +45,28 @@ export const reducer = createReducer(
       ...state,
       loading: false,
     };
-  })
+  }),
+  on(BecariosActions.DeleteBecarioAction, (state: IBecarioState) => {
+    return {
+      ...state,
+      loading: true,
+    };
+  }),
+  on(BecariosActions.DeleteBecarioSuccessAction, (state: IBecarioState, {id}) => {
+    const entitiesUpdated = state.entities.filter(becario =>{
+      return becario.id !== id;
+    })
+    return {
+      ...state,
+      entities: entitiesUpdated,
+    };
+  }),
+  on(BecariosActions.DeleteBecarioErrorAction, (state: IBecarioState) => {
+    return {
+      ...state,
+      loading: false,
+    };
+  }),
 );
 
 

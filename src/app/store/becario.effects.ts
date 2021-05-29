@@ -13,8 +13,9 @@ export class BecarioEffects {
   constructor(
     private action$: Actions,
     private becariosService: BecarioService,
-    private store: Store<IBecarioState>
+    private store: Store<IBecarioState>,
   ) {}
+
 
   FetchBecariosAction$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
@@ -29,4 +30,19 @@ export class BecarioEffects {
       )
     )
   );
+  DeleteBecarioAction$: Observable<Action> = createEffect(() =>
+    this.action$.pipe(
+      ofType(BecariosActions.DeleteBecarioAction),
+      switchMap((action) => {
+        return this.becariosService.deleteBecario(action.id).pipe(
+          map(
+            () =>  BecariosActions.DeleteBecarioSuccessAction({id: action.id}),
+            catchError((error: Error) => of(BecariosActions.DeleteBecarioErrorAction()) )
+          )
+        )
+      }  
+      )
+    )
+  );
 }
+
