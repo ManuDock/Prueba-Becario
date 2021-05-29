@@ -21,7 +21,7 @@
     "@ngrx/effects": "^12.0.0",
     "@ngrx/store": "^12.0.0",
     "@popperjs/core": "^2.9.2",
-    "bootstrap": "^5.0.0-beta3",
+    "bootstrap": "^4.4.1",
     "jquery": "^3.6.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",

@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
-import { FetchBecariosAction, DeleteBecarioAction, AddBecariosAction } from './store/becario.actions';
-import { IBecario, IBecarioState } from './store/becario.reducer';
-import { selectBecarios } from './store/becario.selector';
-import { IAppState } from './store';
+import { IAppState } from '../store';
+import { FetchBecariosAction, DeleteBecarioAction } from '../store/becario.actions';
+import { IBecario, IBecarioState } from '../store/becario.reducer';
+import { selectBecarios } from '../store/becario.selector';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-becario-list',
+  templateUrl: './becario-list.component.html',
+  styleUrls: ['./becario-list.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'Prueba-FullStack';
+export class BecarioListComponent implements OnInit {
+
   public becarios$: Observable<IBecario[]> = of([]);
   constructor(private store: Store<IAppState>) {}
   ngOnInit(): void {
@@ -24,4 +24,5 @@ export class AppComponent implements OnInit {
       this.store.dispatch(DeleteBecarioAction({id}));
     }
   }
+
 }

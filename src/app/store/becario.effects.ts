@@ -44,5 +44,18 @@ export class BecarioEffects {
       )
     )
   );
+  AddBecariosAction$: Observable<Action> = createEffect(() =>
+  this.action$.pipe(
+    ofType(BecariosActions.AddBecariosAction),
+    switchMap((action) =>
+      this.becariosService.createBecario(action.becario).pipe(
+        map(
+          (becario: any) =>  BecariosActions.AddBecariosSuccessAction({becario}),
+          catchError((error: Error) => of(BecariosActions.AddBecariosErrorAction()) )
+        )
+      )
+    )
+  )
+);
 }
 

@@ -8,11 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BecarioEffects } from './store/becario.effects';
 import { StoreModule } from '@ngrx/store';
 import {reducers} from "./store";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BecarioListComponent } from './becario-list/becario-list.component';
+import { AddBecarioComponent } from './add-becario/add-becario.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule, EffectsModule.forRoot([BecarioEffects]), StoreModule.forRoot(reducers, {
+  declarations: [AppComponent, BecarioListComponent, AddBecarioComponent],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule,ReactiveFormsModule,FormsModule,
+     EffectsModule.forRoot([BecarioEffects]), StoreModule.forRoot(reducers, {
     runtimeChecks: {
       strictStateImmutability: true,
       strictActionImmutability: true,

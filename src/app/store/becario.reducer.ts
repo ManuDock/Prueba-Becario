@@ -24,6 +24,7 @@ export const initialState: IBecarioState = {
 
 export const reducer = createReducer(
   initialState,
+  //GET
   on(BecariosActions.FetchBecariosAction, (state: IBecarioState) => {
     return {
       ...state,
@@ -46,6 +47,7 @@ export const reducer = createReducer(
       loading: false,
     };
   }),
+  //DELETE
   on(BecariosActions.DeleteBecarioAction, (state: IBecarioState) => {
     return {
       ...state,
@@ -67,6 +69,25 @@ export const reducer = createReducer(
       loading: false,
     };
   }),
+    //ADD
+    on(BecariosActions.AddBecariosAction, (state: IBecarioState) => {
+      return {
+        ...state,
+        loading: true,
+      };
+    }),
+    on(BecariosActions.AddBecariosSuccessAction, (state: IBecarioState, {becario}) => {
+      return {
+        ...state,
+        entities: [...state.entities, becario],
+      };
+    }),
+    on(BecariosActions.AddBecariosErrorAction, (state: IBecarioState) => {
+      return {
+        ...state,
+        loading: false,
+      };
+    }),
 );
 
 

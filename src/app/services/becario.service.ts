@@ -19,4 +19,9 @@ export class BecarioService {
       `https://guadaltech-fullstack.herokuapp.com/api/becarios/${id}`
     );
   }
+  createBecario(becario: IBecario){
+    return this.httpClient.post(
+      `https://guadaltech-fullstack.herokuapp.com/api/becarios/`, becario
+    );
+  }
 }
